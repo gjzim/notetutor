@@ -1,9 +1,12 @@
-import classes from './App.module.css';
+import classes from "./App.module.css";
+import Startup from "./components/screens/Startup";
 
 function App() {
   return (
     <div className={classes.App}>
-      <h1>Notetutor</h1>
+      <main>
+        <Startup />
+      </main>
     </div>
   );
 }
