@@ -7,8 +7,8 @@ function Startup(props) {
   return (
     <div className={classes.Startup}>
       <LogoLarge />
-      <h2 className={classes.Slogan}>Master Your Fretboard</h2>
-      <div>
+      <h2 className={classes.slogan}>Master Your Fretboard</h2>
+      <div className={classes.controls}>
         <Button>Start Playing</Button>
         <Button>Customize</Button>
       </div>

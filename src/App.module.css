@@ -4,3 +4,7 @@
   height: 547px;
   margin: 30px auto;
 }
+
+.App main {
+  height: 100%;
+}
