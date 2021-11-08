@@ -1,11 +1,13 @@
 import classes from "./App.module.css";
-import Startup from "./components/screens/Startup";
+// import Startup from "./components/screens/Startup";
+import Game from "./components/screens/Game";
 
 function App() {
   return (
     <div className={classes.App}>
       <main>
-        <Startup />
+        {/* <Startup /> */}
+        <Game />
       </main>
     </div>
   );
