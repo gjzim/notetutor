@@ -1,0 +1,11 @@
+.Clock {
+    width: 100%;
+    position: absolute;
+    font-size: 60px;
+    line-height: 1;
+    bottom: 21px;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px #333;
+    pointer-events: none;
+}

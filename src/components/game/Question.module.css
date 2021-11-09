@@ -1,0 +1,23 @@
+.Question {
+  margin-top: 40px;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #333;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+.choices {
+  width: 670px;
+  margin: 0 auto;
+  padding: 0;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+}
