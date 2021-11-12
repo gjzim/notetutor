@@ -1,0 +1,18 @@
+.Modal {
+    position: absolute;
+    z-index: 100;    
+    top: 10%;
+    margin: 0 auto;
+    background: rgba(255,255,255,1);
+    color: #222;
+    text-align: center;
+    box-shadow: 0 0 100px #000;
+    border-radius: 5px;    
+}
+
+.ModalContent {
+    margin: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
