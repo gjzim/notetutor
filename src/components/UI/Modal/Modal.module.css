@@ -11,7 +11,7 @@
 }
 
 .ModalContent {
-    margin: 15px 20px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

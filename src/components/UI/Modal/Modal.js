@@ -6,7 +6,7 @@ import ModalBody from "./ModalBody";
 function Modal(props) {
   return (
     <>
-      <div className={classes.Modal}>
+      <div className={`${classes.Modal} ${props.className}`}>
         {props.header && <ModalHeader>{props.header}</ModalHeader>}
 
         <div className={classes.ModalContent}>
