@@ -1,12 +1,12 @@
 import styles from "./Button.module.css";
 
 function Button(props) {
-  const selectedstyles = [styles.Button];
+  let classes = [styles.Button];
   if (props.type === "small") {
-    selectedstyles.push(styles.Small);
+    classes.push(styles.Small);
   }
 
-  return <button className={selectedstyles.join(' ')}>{props.children}</button>;
+  return <button className={classes.join(' ')}>{props.children}</button>;
 }
 
 export default Button;
