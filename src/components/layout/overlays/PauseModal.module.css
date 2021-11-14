@@ -1,0 +1,14 @@
+.PauseModal {
+    top: 15%;
+}
+
+.PauseModal button {
+    display: block;
+    width: 120px;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.PauseModal button:last-child {
+    margin-bottom: 0;
+}

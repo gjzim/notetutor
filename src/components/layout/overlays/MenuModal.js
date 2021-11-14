@@ -9,9 +9,11 @@ function MenuModal(props) {
     <Modal header="Menu" className={classes.MenuModal}>
       <MenuOptions />
       <ModalControls>
-        <Button>Defaults</Button>        
-        <Button>Close</Button>
-        <Button>Save</Button>
+        <Button>Defaults</Button>
+        <div>          
+          <Button>Save</Button>
+          <Button>Close</Button>
+        </div>
       </ModalControls>
     </Modal>
   );
