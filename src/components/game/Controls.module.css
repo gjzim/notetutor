@@ -5,12 +5,12 @@
     left: 27px;
 }
 
-Button {
+.Controls button {
     float: right;
     margin-left: 15px;
 }
 
-Button:first-child {
+.Controls button:first-child {
     float: left;
     margin: 0;
 }
