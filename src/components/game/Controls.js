@@ -1,9 +1,9 @@
-import classes from "./Controls.module.css";
+import styles from "./Controls.module.css";
 import Button from "./../UI/Button";
 
 function Controls(props) {
   return (
-    <div className={classes.Controls}>
+    <div className={styles.Controls}>
       <Button>Menu</Button>
       <Button>Restart</Button>
       <Button>Pause</Button>

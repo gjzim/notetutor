@@ -1,8 +1,8 @@
-import classes from "./Clock.module.css";
+import styles from "./Clock.module.css";
 
 function Clock(props) {
   return (
-    <div className={classes.Clock}>
+    <div className={styles.Clock}>
       0:00
     </div>
   );

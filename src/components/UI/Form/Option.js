@@ -1,12 +1,12 @@
-import classes from "./Option.module.css";
+import styles from "./Option.module.css";
 
 function Option(props) {
   return (
-    <div className={`${classes.Option} ${props.id} clearfix`}>
-      <div className={classes.OptionLabel}>
+    <div className={`${styles.Option} ${props.id} clearfix`}>
+      <div className={styles.OptionLabel}>
         <label htmlFor={props.id}>{props.label}:</label>
       </div>
-      <div className={classes.OptionField}>{props.children}</div>
+      <div className={styles.OptionField}>{props.children}</div>
     </div>
   );
 }

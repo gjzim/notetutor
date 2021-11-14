@@ -1,14 +1,14 @@
-import classes from "./Startup.module.css";
+import styles from "./Startup.module.css";
 import LogoLarge from "../UI/LogoLarge";
 import Button from "../UI/Button";
 import Footer from "../layout/Footer";
 
 function Startup(props) {
   return (
-    <div className={classes.Startup}>
+    <div className={styles.Startup}>
       <LogoLarge />
-      <h2 className={classes.slogan}>Master Your Fretboard</h2>
-      <div className={classes.controls}>
+      <h2 className={styles.slogan}>Master Your Fretboard</h2>
+      <div className={styles.controls}>
         <Button>Start Playing</Button>
         <Button>Customize</Button>
       </div>

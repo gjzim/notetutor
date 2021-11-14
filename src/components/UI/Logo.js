@@ -1,9 +1,9 @@
 import logoImg from "../../assets/logo.png";
-import classes from "./Logo.module.css";
+import styles from "./Logo.module.css";
 
 function Logo(props) {
   return (
-    <div className={classes.Logo}>
+    <div className={styles.Logo}>
         <img src={logoImg} alt="Notetutor logo" />
     </div>
   );

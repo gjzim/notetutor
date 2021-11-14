@@ -29,3 +29,11 @@
   border-bottom: 2px solid #1b1b1b;
   color: #ddd;
 }
+
+.Button.Small {
+  font-size: 18px;
+  padding: 3px 13px;
+  box-shadow: none;
+  border-bottom: 2px solid #1b1b1b;
+  color: #ddd;  
+}

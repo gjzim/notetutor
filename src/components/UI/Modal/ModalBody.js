@@ -1,8 +1,8 @@
-import classes from "./ModalBody.module.css";
+import styles from "./ModalBody.module.css";
 
 function ModalBody(props) {
   return (
-    <div className={classes.ModalBody}>
+    <div className={styles.ModalBody}>
         {props.children}
     </div>
   );

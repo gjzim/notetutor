@@ -1,7 +1,7 @@
-import classes from "./Backdrop.module.css";
+import styles from "./Backdrop.module.css";
 
 function Backdrop(props) {
-  return <div className={classes.Backdrop}></div>;
+  return <div className={styles.Backdrop}></div>;
 }
 
 export default Backdrop;

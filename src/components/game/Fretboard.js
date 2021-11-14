@@ -1,9 +1,9 @@
-import classes from "./Fretboard.module.css";
+import styles from "./Fretboard.module.css";
 
 function Fretboard(props) {
   return (
-    <div className={classes.Fretboard}>
-      <span id={classes.quesIcon}>?</span>
+    <div className={styles.Fretboard}>
+      <span id={styles.quesIcon}>?</span>
     </div>
   );
 }

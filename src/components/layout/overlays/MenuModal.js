@@ -2,17 +2,17 @@ import Button from "../../UI/Button";
 import Modal from "../../UI/Modal/Modal";
 import ModalControls from "../../UI/Modal/ModalControls";
 import MenuOptions from "./MenuOptions";
-import classes from "./MenuModal.module.css";
+import styles from "./MenuModal.module.css";
 
 function MenuModal(props) {
   return (
-    <Modal header="Menu" className={classes.MenuModal}>
+    <Modal header="Menu" className={styles.MenuModal}>
       <MenuOptions />
       <ModalControls>
-        <Button>Defaults</Button>
+        <Button type="small">Defaults</Button>
         <div>          
-          <Button>Save</Button>
-          <Button>Close</Button>
+          <Button type="small">Save</Button>
+          <Button type="small">Close</Button>
         </div>
       </ModalControls>
     </Modal>

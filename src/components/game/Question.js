@@ -1,13 +1,13 @@
-import classes from "./Question.module.css";
+import styles from "./Question.module.css";
 import Choice from "./Choice";
 
 function Question(props) {
   return (
-    <div className={classes.Question}>
-      <h2 className={classes.title}>
-        Q<span id={classes.serial}>0</span>: Select the right note{" "}
+    <div className={styles.Question}>
+      <h2 className={styles.title}>
+        Q<span id={styles.serial}>0</span>: Select the right note{" "}
       </h2>
-      <ul className={classes.choices}>
+      <ul className={styles.choices}>
         <Choice key="0" note="A" />
         <Choice key="1" note="B" />
         <Choice key="2" note="A#" />
