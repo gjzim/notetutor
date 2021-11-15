@@ -1,0 +1,15 @@
+.ConfirmModal {
+  text-align: center;
+  top: 25%;
+  z-index: 200;
+}
+
+.ConfirmModal p {
+  margin: 0;
+  padding-bottom: 15px;
+  font-size: 22px;
+}
+
+.ConfirmModal button + button {
+    margin-left: 10px;
+}
