@@ -1,0 +1,11 @@
+.InfoModal {
+  text-align: center;
+  top: 25%;
+  z-index: 200;
+}
+
+.InfoModal p {
+  margin: 0;
+  padding-bottom: 15px;
+  font-size: 22px;
+}
