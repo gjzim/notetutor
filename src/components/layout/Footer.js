@@ -4,7 +4,7 @@ function Footer(props) {
   return (
     <footer>
       <p className={styles.footerText}>
-        About | Privacy Policy | © <a href="https://gjzim.com"> Gul Jamal Zim </a>, 2018
+        Designed & Developed by <a href="http://gjzim.com" target="_blank" rel="noreferrer" >Gul Jamal Zim</a>
       </p>
     </footer>
   );
