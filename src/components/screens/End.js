@@ -26,7 +26,7 @@ function End(props) {
 
         <div className={styles.Controls}>
           <Button>Play Again</Button>
-          <Button>Go to Home</Button>
+          <Button>Go Back</Button>
         </div>
       </div>
       <Footer />
