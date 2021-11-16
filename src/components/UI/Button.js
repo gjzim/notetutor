@@ -6,7 +6,11 @@ function Button(props) {
     classes.push(styles.Small);
   }
 
-  return <button className={classes.join(' ')}>{props.children}</button>;
+  return (
+    <button className={classes.join(" ")} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
 }
 
 export default Button;
