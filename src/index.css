@@ -20,3 +20,21 @@ code {
 .clearfix:after {
   clear: both;
 }
+
+#root {
+  position: relative;
+  width: 830px;
+  height: 547px;
+  margin: 30px auto;
+}
+
+#app,
+#overlays {
+  width: 100%;
+  height: 100%;
+}
+
+#overlays {
+  display: flex;
+  justify-content: center;
+}
