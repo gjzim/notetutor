@@ -1,4 +1,3 @@
-import styles from "./App.module.css";
 import { useSelector } from "react-redux";
 import Startup from "./components/screens/Startup";
 import Game from "./components/screens/Game";
