@@ -6,7 +6,7 @@ function Backdrop(props) {
     classes.push(styles.High);
   }
 
-  return <div className={classes.join(" ")}></div>;
+  return <div className={classes.join(" ")} onClick={props.onClick}></div>;
 }
 
 export default Backdrop;
