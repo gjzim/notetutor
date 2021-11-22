@@ -5,3 +5,20 @@
     border-radius: 3px;
     position: relative;
 }
+
+.Controls {
+    position: absolute;
+    width: 775px;
+    bottom: 25px;
+    left: 27px;
+}
+
+.Controls button {
+    float: right;
+    margin-left: 15px;
+}
+
+.Controls button:first-child {
+    float: left;
+    margin: 0;
+}
