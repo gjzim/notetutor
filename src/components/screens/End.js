@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice.js";
+
 import styles from "./End.module.css";
 import Logo from "../UI/Logo";
 import Footer from "../layout/Footer";
@@ -6,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 function End(props) {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.End}>
       <Logo />
@@ -25,8 +30,8 @@ function End(props) {
         <hr className={styles.Divider}></hr>
 
         <div className={styles.Controls}>
-          <Button>Play Again</Button>
-          <Button>Go Back</Button>
+          <Button onClick={() => dispatch(uiActions.changeScreen("game"))}>Play Again</Button>
+          <Button onClick={() => dispatch(uiActions.changeScreen("start"))}>Go Back</Button>
         </div>
       </div>
       <Footer />
