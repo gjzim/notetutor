@@ -6,13 +6,15 @@ import styles from "./MenuModal.module.css";
 
 function MenuModal(props) {
   return (
-    <Modal header="Menu" className={styles.MenuModal}>
+    <Modal header="Menu" className={styles.MenuModal} onBackdropClick={props.onClose}>
       <MenuOptions />
       <ModalControls>
         <Button type="small">Defaults</Button>
-        <div>          
+        <div>
           <Button type="small">Save</Button>
-          <Button type="small">Close</Button>
+          <Button type="small" onClick={props.onClose}>
+            Close
+          </Button>
         </div>
       </ModalControls>
     </Modal>
