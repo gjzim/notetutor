@@ -2,6 +2,7 @@
   text-align: center;
   top: 25%;
   z-index: 200;
+  width: 50%;
 }
 
 .ConfirmModal p {
