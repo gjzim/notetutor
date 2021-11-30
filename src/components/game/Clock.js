@@ -6,7 +6,7 @@ import styles from "./Clock.module.css";
 
 function Clock(props) {
   const isPlaying = useSelector((state) => state.game.playing);
-  const time = useSelector((state) => state.game.instance.time);
+  const time = useSelector((state) => state.game.time);
   const dispatch = useDispatch();
 
   useEffect(() => {

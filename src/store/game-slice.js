@@ -4,6 +4,7 @@ const gameInitState = {
   running: false,
   playing: false,
   instance: null,
+  time: 0
 };
 
 const gameSlice = createSlice({
