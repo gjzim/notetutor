@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { gameDefaultOptions }  from './game-default-options';
 
 const gameInitState = {
   running: false,
   playing: false,
-  options: gameDefaultOptions,
   instance: null,
 };
 
@@ -24,15 +22,6 @@ const gameSlice = createSlice({
     },
     resume(state) {
       state.playing = true;
-    },
-    setOptions(state, action) {
-      state.options = action.payload;
-    },
-    updateOptions(state, action) {
-      state.options = { ...state.options, ...action.payload };
-    },
-    resetOptions(state) {
-      state.options = gameDefaultOptions;
     },
     timeAddSecond(state) {
       if (state.playing) {

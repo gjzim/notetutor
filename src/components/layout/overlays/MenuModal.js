@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { gameDefaultOptions } from "../../../store/game-default-options";
-import { gameActions } from "../../../store/game-slice";
+import { defaultOptions } from "../../../store/default-options";
+import { optionsActions } from "../../../store/options-slice";
 
 import Modal from "../../UI/Modal/Modal";
 import Option from "../../UI/Form/Option";
@@ -24,7 +24,7 @@ const STRINGS = [
 const FRETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 function MenuModal(props) {
-  const options = useSelector((state) => state.game.options);
+  const options = useSelector((state) => state.options);
   const dispatch = useDispatch();
 
   const [selectedTotalQues, setSelectedTotalQues] = useState(options.totalQues);
@@ -77,7 +77,7 @@ function MenuModal(props) {
 
   const saveUpdatedOptions = () => {
     const updatedOptions = getUpdatedOptions();
-    dispatch(gameActions.updateOptions(updatedOptions));
+    dispatch(optionsActions.updateOptions(updatedOptions));
 
     try {
       window.localStorage.setItem(
@@ -209,9 +209,9 @@ function MenuModal(props) {
         <ConfirmModal
           text="Do you really want to reset game options to default?"
           onConfirm={() => {
-            setSelectedTotalQues(gameDefaultOptions.totalQues);
-            setSelectedStrings(gameDefaultOptions.strings);
-            setSelectedFrets(gameDefaultOptions.frets);
+            setSelectedTotalQues(defaultOptions.totalQues);
+            setSelectedStrings(defaultOptions.strings);
+            setSelectedFrets(defaultOptions.frets);
             setShowResetModal(false);
           }}
           onReject={() => setShowResetModal(false)}
