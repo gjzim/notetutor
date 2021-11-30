@@ -26,7 +26,13 @@ const gameSlice = createSlice({
       state.playing = true;
     },
     setOptions(state, action) {
-      state.option = action.payload;
+      state.options = action.payload;
+    },
+    updateOptions(state, action) {
+      state.options = { ...state.options, ...action.payload };
+    },
+    resetOptions(state) {
+      state.options = gameDefaultOptions;
     },
     timeAddSecond(state) {
       if (state.playing) {
