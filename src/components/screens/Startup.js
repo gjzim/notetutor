@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/ui-slice.js";
+import { start } from "../../store/game-actions.js";
 
 import styles from "./Startup.module.css";
 import LogoLarge from "../UI/LogoLarge";
@@ -17,7 +17,7 @@ function Startup(props) {
       <LogoLarge />
       <h2 className={styles.slogan}>Master Your Fretboard</h2>
       <div className={styles.controls}>
-        <Button onClick={() => dispatch(uiActions.changeScreen("game"))}>
+        <Button onClick={() => dispatch(start())}>
           Start Playing
         </Button>
         <Button onClick={() => setShowMenu(true)}>Customize</Button>
