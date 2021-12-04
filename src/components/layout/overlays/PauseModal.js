@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { uiActions } from "../../../store/ui-slice";
+import { start, stop } from "../../../store/game-actions";
+import { gameActions } from "../../../store/game-slice";
 
 import Button from "../../UI/Button";
 import Modal from "../../UI/Modal/Modal";
@@ -12,6 +13,37 @@ function PauseModal(props) {
   const [showQuitConfirm, setShowQuitConfirm] = useState(false);
   const dispatch = useDispatch();
 
+  const handleRestartClick = () => {
+    dispatch(gameActions.pause());
+    setShowRestartConfirm(true);
+  };
+
+  const handleRestartConfirm = () => {
+    setShowRestartConfirm(false);
+    props.onClose();
+    dispatch(start());
+  };
+
+  const handleRestartRejectClose = () => {
+    dispatch(gameActions.resume());
+    setShowRestartConfirm(false);
+  };
+
+  const handleQuitClick = () => {
+    dispatch(gameActions.pause());
+    setShowQuitConfirm(true);
+  };
+
+  const handleQuitConfirm = () => {
+    setShowQuitConfirm(false);
+    dispatch(stop());
+  };
+
+  const handleQuitRejectClose = () => {
+    setShowQuitConfirm(false);
+    dispatch(gameActions.resume());
+  };
+
   return (
     <Modal
       header="Pause"
@@ -19,23 +51,24 @@ function PauseModal(props) {
       onBackdropClick={props.onClose}
     >
       <Button onClick={props.onClose}>Resume</Button>
-      <Button onClick={() => setShowRestartConfirm(true)}>Restart</Button>
-      <Button onClick={() => setShowQuitConfirm(true)}>Quit</Button>
+      <Button onClick={handleRestartClick}>Restart</Button>
+      <Button onClick={handleQuitClick}>Quit</Button>
 
       {showRestartConfirm && (
         <ConfirmModal
           text="Do you really want to restart the game?"
-          onReject={() => setShowRestartConfirm(false)}
-          onClose={() => setShowRestartConfirm(false)}
+          onConfirm={handleRestartConfirm}
+          onReject={handleRestartRejectClose}
+          onClose={handleRestartRejectClose}
         />
       )}
 
       {showQuitConfirm && (
         <ConfirmModal
           text="Do you really want to quit the game?"
-          onConfirm={() => dispatch(uiActions.changeScreen('start'))}
-          onReject={() => setShowQuitConfirm(false)}
-          onClose={() => setShowQuitConfirm(false)}
+          onConfirm={handleQuitConfirm}
+          onReject={handleQuitRejectClose}
+          onClose={handleQuitRejectClose}
         />
       )}
     </Modal>
