@@ -136,8 +136,8 @@ function MenuModal(props) {
           >
             <option value="">Custom</option>
             <option value="1,2,3,4,5,6">All</option>
-            <option value="1,2,3">Top Three</option>
-            <option value="4,5,6">Bottom Three</option>
+            <option value="1,2,3">1-3</option>
+            <option value="4,5,6">4-6</option>
           </select>
 
           {!hideStringsCheckboxes && (
