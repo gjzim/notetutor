@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { defaultOptions } from "./default-options";
+import { DEFAULT_OPTIONS } from "../constants/options";
 
 const optionsSlice = createSlice({
   name: "options",
-  initialState: defaultOptions,
+  initialState: DEFAULT_OPTIONS,
   reducers: {
     updateOptions(state, action) {
       state.totalQues = action.payload.totalQues || state.totalQues;
@@ -11,9 +11,9 @@ const optionsSlice = createSlice({
       state.frets = action.payload.frets || state.frets;
     },
     resetOptions(state) {
-      state.totalQues = defaultOptions.totalQues;
-      state.strings = defaultOptions.strings;
-      state.frets = defaultOptions.frets;
+      state.totalQues = DEFAULT_OPTIONS.totalQues;
+      state.strings = DEFAULT_OPTIONS.strings;
+      state.frets = DEFAULT_OPTIONS.frets;
     },
   },
 });
