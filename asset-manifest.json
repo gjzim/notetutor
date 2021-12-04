@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/notetutor/static/css/main.127aa93f.chunk.css",
+    "main.js": "/notetutor/static/js/main.14dd20af.chunk.js",
+    "main.js.map": "/notetutor/static/js/main.14dd20af.chunk.js.map",
+    "runtime-main.js": "/notetutor/static/js/runtime-main.617788b5.js",
+    "runtime-main.js.map": "/notetutor/static/js/runtime-main.617788b5.js.map",
+    "static/js/2.90e5a1ca.chunk.js": "/notetutor/static/js/2.90e5a1ca.chunk.js",
+    "static/js/2.90e5a1ca.chunk.js.map": "/notetutor/static/js/2.90e5a1ca.chunk.js.map",
+    "static/js/3.aba933fa.chunk.js": "/notetutor/static/js/3.aba933fa.chunk.js",
+    "static/js/3.aba933fa.chunk.js.map": "/notetutor/static/js/3.aba933fa.chunk.js.map",
+    "index.html": "/notetutor/index.html",
+    "static/css/main.127aa93f.chunk.css.map": "/notetutor/static/css/main.127aa93f.chunk.css.map",
+    "static/js/2.90e5a1ca.chunk.js.LICENSE.txt": "/notetutor/static/js/2.90e5a1ca.chunk.js.LICENSE.txt",
+    "static/media/Game.module.css": "/notetutor/static/media/game-bg.9fe9aee8.jpg",
+    "static/media/logo-large.ce04b914.png": "/notetutor/static/media/logo-large.ce04b914.png",
+    "static/media/Startup.module.css": "/notetutor/static/media/startup-bg.b6f53aab.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.617788b5.js",
+    "static/js/2.90e5a1ca.chunk.js",
+    "static/css/main.127aa93f.chunk.css",
+    "static/js/main.14dd20af.chunk.js"
+  ]
+}
