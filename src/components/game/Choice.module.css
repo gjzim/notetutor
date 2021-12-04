@@ -6,6 +6,7 @@
   background: linear-gradient(#fff 0%, #bbb 100%);
   color: #b90000;
   font-size: 35px;
+  text-transform: uppercase;
   border-radius: 3px;
   padding: 10px 3px;
   line-height: 1;
@@ -13,7 +14,7 @@
   border-top: 1px solid #fff;
   border-bottom: 2px solid #e2e2e2;
   cursor: pointer;
-  user-select: none;
+  user-select: none;  
 }
 
 .Choice:hover {
