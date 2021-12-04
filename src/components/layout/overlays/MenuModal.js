@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { defaultOptions } from "../../../store/default-options";
 import { optionsActions } from "../../../store/options-slice";
+import { DEFAULT_OPTIONS } from "../../../constants/options";
 
 import Modal from "../../UI/Modal/Modal";
 import Option from "../../UI/Form/Option";
@@ -209,9 +209,9 @@ function MenuModal(props) {
         <ConfirmModal
           text="Do you really want to reset game options to default?"
           onConfirm={() => {
-            setSelectedTotalQues(defaultOptions.totalQues);
-            setSelectedStrings(defaultOptions.strings);
-            setSelectedFrets(defaultOptions.frets);
+            setSelectedTotalQues(DEFAULT_OPTIONS.totalQues);
+            setSelectedStrings(DEFAULT_OPTIONS.strings);
+            setSelectedFrets(DEFAULT_OPTIONS.frets);
             setShowResetModal(false);
           }}
           onReject={() => setShowResetModal(false)}
