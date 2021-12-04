@@ -98,15 +98,6 @@ function MenuModal(props) {
     }
   };
 
-  const hideStringsCheckboxes = ["1,2,3,4,5,6", "1,2,3", "4,5,6"].includes(
-    selectedStrings.join()
-  );
-  const hideFretsCheckboxes = [
-    "0,1,2,3,4,5,6,7,8,9,10,11,12,13",
-    "1,2,3,4,5",
-    "6,7,8,9,10,11,12",
-  ].includes(selectedFrets.join());
-
   return (
     <Modal
       header="Menu"
@@ -140,22 +131,20 @@ function MenuModal(props) {
             <option value="4,5,6">4-6</option>
           </select>
 
-          {!hideStringsCheckboxes && (
-            <div className={styles.StringCheckboxesWrap}>
-              {STRINGS.map((s) => (
-                <Checkbox
-                  key={s.id}
-                  id={s.id}
-                  className={styles.StringCheckbox}
-                  name="string"
-                  label={s.label}
-                  value={s.value}
-                  checked={selectedStrings.includes(s.value)}
-                  onChange={handleCheckboxChange}
-                />
-              ))}
-            </div>
-          )}
+          <div className={styles.StringCheckboxesWrap}>
+            {STRINGS.map((s) => (
+              <Checkbox
+                key={s.id}
+                id={s.id}
+                className={styles.StringCheckbox}
+                name="string"
+                label={s.label}
+                value={s.value}
+                checked={selectedStrings.includes(s.value)}
+                onChange={handleCheckboxChange}
+              />
+            ))}
+          </div>
         </Option>
 
         <Option label="Frets" id="frets">
@@ -171,22 +160,20 @@ function MenuModal(props) {
             <option value="6,7,8,9,10,11,12">6-12</option>
           </select>
 
-          {!hideFretsCheckboxes && (
-            <div className={styles.FretCheckboxesWrap}>
-              {FRETS.map((f) => (
-                <Checkbox
-                  key={`fret_${f}`}
-                  id={`fret_${f}`}
-                  className={styles.FretCheckbox}
-                  name="fret"
-                  label={f}
-                  value={f}
-                  checked={selectedFrets.includes(f)}
-                  onChange={handleCheckboxChange}
-                />
-              ))}
-            </div>
-          )}
+          <div className={styles.FretCheckboxesWrap}>
+            {FRETS.map((f) => (
+              <Checkbox
+                key={`fret_${f}`}
+                id={`fret_${f}`}
+                className={styles.FretCheckbox}
+                name="fret"
+                label={f}
+                value={f}
+                checked={selectedFrets.includes(f)}
+                onChange={handleCheckboxChange}
+              />
+            ))}
+          </div>
         </Option>
       </div>
 
