@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { optionsActions } from "../../../store/options-slice";
 import { DEFAULT_OPTIONS } from "../../../constants/options";
+import { FRETS } from "../../../constants/guitar";
 
 import Modal from "../../UI/Modal/Modal";
 import Option from "../../UI/Form/Option";
@@ -20,8 +21,6 @@ const STRINGS = [
   { id: "string_5", label: "5(A)", value: 5 },
   { id: "string_6", label: "6(e)", value: 6 },
 ];
-
-const FRETS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 function MenuModal(props) {
   const options = useSelector((state) => state.options);
