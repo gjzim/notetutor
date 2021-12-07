@@ -30,10 +30,11 @@ function MenuModal(props) {
   const [selectedStrings, setSelectedStrings] = useState(options.strings);
   const [selectedFrets, setSelectedFrets] = useState(options.frets);
 
+  const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
+  
   const [showResetModal, setShowResetModal] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleSelectChange = (event) => {
     const stateUpdater =
@@ -95,7 +96,9 @@ function MenuModal(props) {
       setError("Something has gone wrong. Please try again later.");
     }
 
-    setShowSuccessModal(true);
+    setSuccess(
+      "Settings successfully updated. New settings will take effect from the next question/new game."
+    );
   };
 
   const handleCloseClick = () => {
@@ -222,13 +225,7 @@ function MenuModal(props) {
         />
       )}
 
-      {showSuccessModal && (
-        <InfoModal
-          text="Settings successfully updated. New settings will take effect from the next question/new game."
-          onClose={() => setShowSuccessModal(false)}
-        />
-      )}
-
+      {success && <InfoModal text={success} onClose={() => setSuccess(null)} />}
       {error && <InfoModal text={error} onClose={() => setError(null)} />}
     </Modal>
   );
