@@ -110,7 +110,7 @@ function MenuModal(props) {
     <Modal
       header="Menu"
       className={styles.MenuModal}
-      onBackdropClick={props.onClose}
+      onBackdropClick={handleCloseClick}
     >
       <div className="MenuOptions">
         <Option label="Total Questions" id="total_ques">
