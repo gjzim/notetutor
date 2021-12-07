@@ -17,14 +17,15 @@ export const start = () => {
 export const advance = (result) => {
   return (dispatch, getState) => {
     const state = getState();
+    dispatch(gameActions.updateScore(result));
+    
     if (state.game.quiz.current.serial >= state.options.totalQues) {
       dispatch(uiActions.changeScreen("end"));
-      dispatch(gameActions.quit());      
+      dispatch(gameActions.quit());
     } else {
       dispatch(
         gameActions.advance({
           quiz: generateQuiz(state.options, state.game.quiz.current),
-          result: result,
         })
       );
     }

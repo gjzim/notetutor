@@ -29,10 +29,6 @@ const gameSlice = createSlice({
       state.playing = true;
     },
     advance(state, action) {
-      if (action.payload.result === 'correct') {
-        state.score++;
-      }
-
       state.quiz.prev = {
         serial: state.quiz.current.serial,
         string: state.quiz.current.ques.string,
@@ -40,6 +36,11 @@ const gameSlice = createSlice({
       };
 
       state.quiz.current = action.payload.quiz;
+    },
+    updateScore(state, action) {
+      if (action.payload === 'correct') {
+        state.score++;
+      }
     },
     timeAddSecond(state) {
       if (state.playing) {
