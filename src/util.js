@@ -35,6 +35,13 @@ const getRandomNotes = (include = [], total = 5) => {
 };
 
 const generateQues = (options, prevQues) => {
+  if (options.strings.length === 1 && options.frets.length === 1) {
+    return { 
+      string: options.strings[0], 
+      fret: options.frets[0] 
+    };
+  }
+
   let string = getRandomElement(options.strings);
   let fret = getRandomElement(options.frets);
 
