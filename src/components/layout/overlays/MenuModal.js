@@ -33,7 +33,7 @@ function MenuModal(props) {
   const [showResetModal, setShowResetModal] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSelectChange = (event) => {
     const stateUpdater =
@@ -76,6 +76,14 @@ function MenuModal(props) {
 
   const saveUpdatedOptions = () => {
     const updatedOptions = getUpdatedOptions();
+    if (
+      updatedOptions.strings.length === 0 ||
+      updatedOptions.frets.length === 0
+    ) {
+      setError("Please select atleast one string and fret.");
+      return;
+    }
+
     dispatch(optionsActions.updateOptions(updatedOptions));
 
     try {
@@ -84,7 +92,7 @@ function MenuModal(props) {
         JSON.stringify(updatedOptions)
       );
     } catch (error) {
-      setShowErrorModal(true);
+      setError("Something has gone wrong. Please try again later.");
     }
 
     setShowSuccessModal(true);
@@ -221,12 +229,7 @@ function MenuModal(props) {
         />
       )}
 
-      {showErrorModal && (
-        <InfoModal
-          text="Something has gone wrong. Please try again later."
-          onClose={() => setShowErrorModal(false)}
-        />
-      )}
+      {error && <InfoModal text={error} onClose={() => setError(null)} />}
     </Modal>
   );
 }
