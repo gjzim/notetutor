@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { start } from "../../store/game-actions.js";
+import { start } from "../../store/game-actions";
 import styles from "./Startup.module.css";
 import LogoLarge from "../UI/LogoLarge";
 import Button from "../UI/Button";

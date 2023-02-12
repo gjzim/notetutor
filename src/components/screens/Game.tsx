@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { start, advance } from "../../store/game-actions";
+import { useEffect, useRef, useState } from "react";
+import { advance, start } from "../../store/game-actions";
 import { gameActions } from "../../store/game-slice";
 import TIMINGS from "../../constants/timings";
-
 import styles from "./Game.module.css";
 import Logo from "../UI/Logo";
 import NoticeCorrect from "../game/NoticeCorrect";
@@ -15,23 +13,26 @@ import Clock from "../game/Clock";
 import MenuModal from "../layout/overlays/MenuModal";
 import PauseModal from "../layout/overlays/PauseModal";
 import ConfirmModal from "../layout/overlays/ConfirmModal";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
-function Game(props) {
+function Game() {
     const [showMenu, setShowMenu] = useState(false);
     const [showPause, setShowPause] = useState(false);
     const [showRestart, setShowRestart] = useState(false);
     const [showCorrectNotice, setShowCorrectNotice] = useState(false);
     const [showWrongNotice, setShowWrongNotice] = useState(false);
-    const timeOutHandlerRef = useRef(null);
+    const timeOutHandlerRef = useRef<undefined | ReturnType<typeof setTimeout>>();
 
-    const dispatch = useDispatch();
-    const currentQuiz = useSelector((state) => state.game.quiz.current);
+    const dispatch = useAppDispatch();
+    const currentQuiz = useAppSelector((state) => {
+        if (state.game.quiz) return state.game.quiz.current;
+    });
 
     useEffect(() => {
         return () => clearTimeout(timeOutHandlerRef.current);
     }, []);
 
-    const handleChoiceClick = (result) => {
+    const handleChoiceClick = (result: string) => {
         if (result === "correct") {
             setShowCorrectNotice(true);
         } else {
@@ -80,14 +81,20 @@ function Game(props) {
         setShowRestart(false);
     };
 
+    if (!currentQuiz) return null;
+
     return (
         <div className={styles.Game}>
             <Logo />
             {showCorrectNotice && <NoticeCorrect />}
-            {showWrongNotice && <NoticeWrong answer={currentQuiz.answer} />}
+            {showWrongNotice && <NoticeWrong answer={currentQuiz.answer ?? ""} />}
 
             <Fretboard string={currentQuiz.ques.string} fret={currentQuiz.ques.fret} />
-            <Question serial={currentQuiz.serial} options={currentQuiz.options} onChoiceClick={handleChoiceClick} />
+            <Question
+                serial={currentQuiz.serial}
+                options={currentQuiz.options ?? []}
+                onChoiceClick={handleChoiceClick}
+            />
             <div className={styles.Controls}>
                 <Button onClick={handleMenuClick}>Menu</Button>
                 <Button onClick={handleRestartClick}>Restart</Button>

@@ -1,5 +1,5 @@
 .Question {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .title {
@@ -14,10 +14,10 @@
 }
 
 .choices {
-  width: 670px;
-  margin: 0 auto;
-  padding: 0;
-  user-select: none;
-  display: flex;
-  justify-content: space-between;
+    width: 670px;
+    margin: 0 auto;
+    padding: 0;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
 }

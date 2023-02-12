@@ -1,54 +1,54 @@
 .Choice {
-  list-style: none;
-  width: 100px;
-  text-align: center;
-  background: white;
-  background: linear-gradient(#fff 0%, #bbb 100%);
-  color: #b90000;
-  font-size: 35px;
-  text-transform: uppercase;
-  border-radius: 3px;
-  padding: 10px 3px;
-  line-height: 1;
-  box-shadow: 0px 3px 4px #333;
-  border-top: 1px solid #fff;
-  border-bottom: 2px solid #e2e2e2;
-  cursor: pointer;
-  user-select: none;  
+    list-style: none;
+    width: 100px;
+    text-align: center;
+    background: white;
+    background: linear-gradient(#fff 0%, #bbb 100%);
+    color: #b90000;
+    font-size: 35px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 10px 3px;
+    line-height: 1;
+    box-shadow: 0px 3px 4px #333;
+    border-top: 1px solid #fff;
+    border-bottom: 2px solid #e2e2e2;
+    cursor: pointer;
+    user-select: none;
 }
 
 .Choice:hover {
-  background: linear-gradient(#bbb 0%, #fff 100%);
+    background: linear-gradient(#bbb 0%, #fff 100%);
 }
 
 .Choice:active {
-  border-top: 0;
-  box-shadow: 0px 1px 1px #333;
-  padding: 10px 3px 9px;
+    border-top: 0;
+    box-shadow: 0px 1px 1px #333;
+    padding: 10px 3px 9px;
 }
 
 .Choice.correct {
-  background: #118611;
-  background: linear-gradient(#118611 0%, #0f690f 100%);
-  color: #ddd;
-  border-top: 1px solid #118611;
-  border-bottom: 2px solid #118611;
-  cursor: default;
-  pointer-events: none;
+    background: #118611;
+    background: linear-gradient(#118611 0%, #0f690f 100%);
+    color: #ddd;
+    border-top: 1px solid #118611;
+    border-bottom: 2px solid #118611;
+    cursor: default;
+    pointer-events: none;
 }
 
 .Choice.wrong {
-  background: #d00404;
-  background: linear-gradient(#d00404 0%, #860101 100%);
-  color: #ddd;
-  border-top: 1px solid #d00404;
-  border-bottom: 2px solid #ad0000;
-  box-shadow: 0px 3px 4px #460808;
-  cursor: default;
-  pointer-events: none;
+    background: #d00404;
+    background: linear-gradient(#d00404 0%, #860101 100%);
+    color: #ddd;
+    border-top: 1px solid #d00404;
+    border-bottom: 2px solid #ad0000;
+    box-shadow: 0px 3px 4px #460808;
+    cursor: default;
+    pointer-events: none;
 }
 
 .Choice.wrong .fa {
-  position: relative;
-  top: -1px;
+    position: relative;
+    top: -1px;
 }

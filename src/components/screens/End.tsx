@@ -1,6 +1,6 @@
 import { uiActions } from "../../store/ui-slice";
 import { start } from "../../store/game-actions";
-import { formatClockTime } from "../../util.js";
+import { formatClockTime } from "../../util";
 import styles from "./End.module.css";
 import Logo from "../UI/Logo";
 import Footer from "../layout/Footer";
