@@ -1,12 +1,12 @@
 .ModalHeader {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px 5px 0 0;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px 5px 0 0;
 }
 
 .ModalHeader h3 {
-  margin: 0;
-  font-size: 24px;
-  line-height: 1.7;
-  text-transform: uppercase;
-  color: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    color: #ffffff;
 }

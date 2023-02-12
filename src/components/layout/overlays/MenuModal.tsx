@@ -12,7 +12,7 @@ import InfoModal from "./InfoModal";
 import styles from "./MenuModal.module.css";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 
-const STRINGS = [
+const STRING_OPTIONS = [
     { id: "string_1", label: "1(E)", value: 1 },
     { id: "string_2", label: "2(B)", value: 2 },
     { id: "string_3", label: "3(G)", value: 3 },
@@ -21,7 +21,7 @@ const STRINGS = [
     { id: "string_6", label: "6(e)", value: 6 },
 ];
 
-function MenuModal(props: any) {
+function MenuModal({ onClose }: { onClose: () => void }) {
     const options = useAppSelector((state) => state.options);
     const dispatch = useAppDispatch();
 
@@ -37,7 +37,6 @@ function MenuModal(props: any) {
 
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const stateUpdater = event.target.name === "strings" ? setSelectedStrings : setSelectedFrets;
-
         const value = event.target.value ? event.target.value.split(",").map((i) => +i) : [];
 
         stateUpdater(value);
@@ -48,10 +47,10 @@ function MenuModal(props: any) {
         const stateUpdater = event.target.name === "string" ? setSelectedStrings : setSelectedFrets;
 
         stateUpdater((prevState) => {
-            if (prevState.includes(selectedVal)) {
-                return [...prevState].filter((i) => i !== selectedVal);
-            } else {
+            if (event.target.checked) {
                 return [...prevState, selectedVal].sort();
+            } else {
+                return prevState.filter((val) => val !== selectedVal);
             }
         });
     };
@@ -73,18 +72,13 @@ function MenuModal(props: any) {
     const saveUpdatedOptions = () => {
         const updatedOptions = getUpdatedOptions();
         if (updatedOptions.strings.length === 0 || updatedOptions.frets.length === 0) {
-            setError("Please select atleast one string and fret.");
+            setError("Please select at least one string and fret.");
             return;
         }
 
         dispatch(optionsActions.updateOptions(updatedOptions));
 
-        try {
-            window.localStorage.setItem("nt-game-options", JSON.stringify(updatedOptions));
-        } catch (error) {
-            setError("Something has gone wrong. Please try again later.");
-        }
-
+        window.localStorage.setItem("nt-game-options", JSON.stringify(updatedOptions));
         setSuccess("Settings successfully updated. New settings will take effect from the next question/new game.");
     };
 
@@ -92,115 +86,122 @@ function MenuModal(props: any) {
         if (JSON.stringify(options) !== JSON.stringify(getUpdatedOptions())) {
             setShowSaveModal(true);
         } else {
-            props.onClose();
+            onClose();
         }
     };
 
     return (
         <Modal header="Menu" className={styles.MenuModal} onBackdropClick={handleCloseClick}>
-            <div className="MenuOptions">
-                <Option label="Total Questions" id="total_ques">
-                    <input
-                        type="range"
-                        min="10"
-                        max="99"
-                        value={selectedTotalQues}
-                        className={styles.TotalQues}
-                        onChange={(event) => setSelectedTotalQues(+event.target.value)}
-                    />
-                    <span id="total_ques_display" className={styles.TotalQuesDisp}>
-                        {selectedTotalQues}
-                    </span>
-                </Option>
+            <>
+                <div className="MenuOptions">
+                    <Option label="Total Questions" id="total_ques">
+                        <input
+                            type="range"
+                            min="10"
+                            max="99"
+                            value={selectedTotalQues}
+                            className={styles.TotalQues}
+                            onChange={(event) => setSelectedTotalQues(+event.target.value)}
+                        />
+                        <span id="total_ques_display" className={styles.TotalQuesDisp}>
+                            {selectedTotalQues}
+                        </span>
+                    </Option>
 
-                <Option label="Strings" id="strings">
-                    <select name="strings" value={selectedStrings.join()} onChange={handleSelectChange}>
-                        <option value="">Custom</option>
-                        <option value="1,2,3,4,5,6">All</option>
-                        <option value="1,2,3">1-3</option>
-                        <option value="4,5,6">4-6</option>
-                    </select>
+                    <Option label="Strings" id="strings">
+                        <select name="strings" value={selectedStrings.join()} onChange={handleSelectChange}>
+                            <option value="">Custom</option>
+                            <option value="1,2,3,4,5,6">All</option>
+                            <option value="1,2,3">1-3</option>
+                            <option value="4,5,6">4-6</option>
+                        </select>
 
-                    <div className={styles.StringCheckboxesWrap}>
-                        {STRINGS.map((s) => (
-                            <Checkbox
-                                key={s.id}
-                                id={s.id}
-                                className={styles.StringCheckbox}
-                                name="string"
-                                label={s.label}
-                                value={s.value}
-                                checked={selectedStrings.includes(s.value)}
-                                onChange={handleCheckboxChange}
-                            />
-                        ))}
-                    </div>
-                </Option>
+                        <div className={styles.StringCheckboxesWrap}>
+                            {STRING_OPTIONS.map((s) => (
+                                <Checkbox
+                                    key={s.id}
+                                    id={s.id}
+                                    className={styles.StringCheckbox}
+                                    name="string"
+                                    label={s.label}
+                                    value={s.value}
+                                    checked={selectedStrings.includes(s.value)}
+                                    onChange={handleCheckboxChange}
+                                />
+                            ))}
+                        </div>
+                    </Option>
 
-                <Option label="Frets" id="frets">
-                    <select name="frets" id="frets-select" value={selectedFrets.join()} onChange={handleSelectChange}>
-                        <option value="">Custom</option>
-                        <option value="0,1,2,3,4,5,6,7,8,9,10,11,12,13">All</option>
-                        <option value="1,2,3,4,5">1-5</option>
-                        <option value="6,7,8,9,10,11,12">6-12</option>
-                    </select>
+                    <Option label="Frets" id="frets">
+                        <select
+                            name="frets"
+                            id="frets-select"
+                            value={selectedFrets.join()}
+                            onChange={handleSelectChange}
+                        >
+                            <option value="">Custom</option>
+                            <option value="0,1,2,3,4,5,6,7,8,9,10,11,12,13">All</option>
+                            <option value="1,2,3,4,5">1-5</option>
+                            <option value="6,7,8,9,10,11,12">6-12</option>
+                        </select>
 
-                    <div className={styles.FretCheckboxesWrap}>
-                        {FRETS.map((f) => (
-                            <Checkbox
-                                key={`fret_${f}`}
-                                id={`fret_${f}`}
-                                className={styles.FretCheckbox}
-                                name="fret"
-                                label={f}
-                                value={f}
-                                checked={selectedFrets.includes(f)}
-                                onChange={handleCheckboxChange}
-                            />
-                        ))}
-                    </div>
-                </Option>
-            </div>
-
-            <ModalControls>
-                <Button type="small" onClick={() => setShowResetModal(true)}>
-                    Reset
-                </Button>
-                <div>
-                    <Button type="small" onClick={saveUpdatedOptions}>
-                        Save
-                    </Button>
-                    <Button type="small" onClick={handleCloseClick}>
-                        Close
-                    </Button>
+                        <div className={styles.FretCheckboxesWrap}>
+                            {FRETS.map((f) => (
+                                <Checkbox
+                                    key={`fret_${f}`}
+                                    id={`fret_${f}`}
+                                    className={styles.FretCheckbox}
+                                    name="fret"
+                                    label={f}
+                                    value={f}
+                                    checked={selectedFrets.includes(f)}
+                                    onChange={handleCheckboxChange}
+                                />
+                            ))}
+                        </div>
+                    </Option>
                 </div>
-            </ModalControls>
 
-            {showResetModal && (
-                <ConfirmModal
-                    text="Do you really want to reset game options to default?"
-                    onConfirm={() => {
-                        setSelectedTotalQues(DEFAULT_OPTIONS.totalQues);
-                        setSelectedStrings(DEFAULT_OPTIONS.strings);
-                        setSelectedFrets(DEFAULT_OPTIONS.frets);
-                        setShowResetModal(false);
-                    }}
-                    onReject={() => setShowResetModal(false)}
-                    onClose={() => setShowResetModal(false)}
-                />
-            )}
+                <ModalControls>
+                    <Button type="small" onClick={() => setShowResetModal(true)}>
+                        Reset
+                    </Button>
+                    <div>
+                        <Button type="small" onClick={saveUpdatedOptions}>
+                            Save
+                        </Button>
+                        <Button type="small" onClick={handleCloseClick}>
+                            Close
+                        </Button>
+                    </div>
+                </ModalControls>
 
-            {showSaveModal && (
-                <ConfirmModal
-                    text="There are unsaved changes. Do you really want to close?"
-                    onConfirm={props.onClose}
-                    onReject={() => setShowSaveModal(false)}
-                    onClose={() => setShowSaveModal(false)}
-                />
-            )}
+                {showResetModal && (
+                    <ConfirmModal
+                        text="Do you really want to reset game options to default?"
+                        onConfirm={() => {
+                            setSelectedTotalQues(DEFAULT_OPTIONS.totalQues);
+                            setSelectedStrings(DEFAULT_OPTIONS.strings);
+                            setSelectedFrets(DEFAULT_OPTIONS.frets);
+                            setShowResetModal(false);
+                        }}
+                        onReject={() => setShowResetModal(false)}
+                        onClose={() => setShowResetModal(false)}
+                    />
+                )}
 
-            {success && <InfoModal text={success} onClose={() => setSuccess("")} />}
-            {error && <InfoModal text={error} onClose={() => setError("")} />}
+                {showSaveModal && (
+                    <ConfirmModal
+                        text="There are unsaved changes. Do you really want to close?"
+                        onConfirm={onClose}
+                        onReject={() => setShowSaveModal(false)}
+                        onClose={() => setShowSaveModal(false)}
+                    />
+                )}
+
+                {success && <InfoModal text={success} onClose={() => setSuccess("")} />}
+                {error && <InfoModal text={error} onClose={() => setError("")} />}
+            </>
         </Modal>
     );
 }

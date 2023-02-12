@@ -2,11 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type ScreenType = "start" | "game" | "end";
 
-export type UiState = {
-    currentScreen: ScreenType;
-};
-
-const initState: UiState = {
+const initState: { currentScreen: ScreenType } = {
     currentScreen: "start",
 };
 
