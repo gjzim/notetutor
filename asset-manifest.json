@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/notetutor/static/css/main.1791a0ef.chunk.css",
-    "main.js": "/notetutor/static/js/main.aad547cc.chunk.js",
-    "main.js.map": "/notetutor/static/js/main.aad547cc.chunk.js.map",
+    "main.css": "/notetutor/static/css/main.930e7975.chunk.css",
+    "main.js": "/notetutor/static/js/main.9a41afbe.chunk.js",
+    "main.js.map": "/notetutor/static/js/main.9a41afbe.chunk.js.map",
     "runtime-main.js": "/notetutor/static/js/runtime-main.887c6c75.js",
     "runtime-main.js.map": "/notetutor/static/js/runtime-main.887c6c75.js.map",
-    "static/js/2.d0f9053e.chunk.js": "/notetutor/static/js/2.d0f9053e.chunk.js",
-    "static/js/2.d0f9053e.chunk.js.map": "/notetutor/static/js/2.d0f9053e.chunk.js.map",
+    "static/js/2.a6deb39b.chunk.js": "/notetutor/static/js/2.a6deb39b.chunk.js",
+    "static/js/2.a6deb39b.chunk.js.map": "/notetutor/static/js/2.a6deb39b.chunk.js.map",
     "index.html": "/notetutor/index.html",
-    "static/css/main.1791a0ef.chunk.css.map": "/notetutor/static/css/main.1791a0ef.chunk.css.map",
-    "static/js/2.d0f9053e.chunk.js.LICENSE.txt": "/notetutor/static/js/2.d0f9053e.chunk.js.LICENSE.txt",
+    "static/css/main.930e7975.chunk.css.map": "/notetutor/static/css/main.930e7975.chunk.css.map",
+    "static/js/2.a6deb39b.chunk.js.LICENSE.txt": "/notetutor/static/js/2.a6deb39b.chunk.js.LICENSE.txt",
     "static/media/Game.module.css": "/notetutor/static/media/game-bg.9fe9aee8.jpg",
     "static/media/logo-large.ce04b914.png": "/notetutor/static/media/logo-large.ce04b914.png",
     "static/media/Startup.module.css": "/notetutor/static/media/startup-bg.b6f53aab.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.887c6c75.js",
-    "static/js/2.d0f9053e.chunk.js",
-    "static/css/main.1791a0ef.chunk.css",
-    "static/js/main.aad547cc.chunk.js"
+    "static/js/2.a6deb39b.chunk.js",
+    "static/css/main.930e7975.chunk.css",
+    "static/js/main.9a41afbe.chunk.js"
   ]
 }
