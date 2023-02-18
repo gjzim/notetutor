@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { gameActions } from "../../store/game-slice";
-import { formatClockTime } from "../../util";
+import { formatClockTime } from "../../helpers/util";
 import styles from "./Clock.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 

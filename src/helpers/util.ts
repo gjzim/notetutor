@@ -1,5 +1,5 @@
-import { NOTES, STRING_FRET_NOTES } from "./constants/guitar";
-import { OptionsType } from "./constants/options";
+import { NOTES, STRING_FRET_NOTES } from "../constants/guitar";
+import { OptionsType } from "../constants/options";
 
 export const randomInteger = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;

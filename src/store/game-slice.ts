@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Quiz } from "../util";
+import { Quiz } from "../helpers/util";
 
 export type GameQuiz = {
     current: Quiz;

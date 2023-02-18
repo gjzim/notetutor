@@ -1,6 +1,6 @@
 import { uiActions } from "./ui-slice";
 import { gameActions } from "./game-slice";
-import { generateQuiz } from "../util";
+import { generateQuiz } from "../helpers/util";
 import { AppThunk } from "./index";
 
 export const start = (): AppThunk => {
