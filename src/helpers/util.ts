@@ -5,18 +5,21 @@ export const randomInteger = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const formatClockTime = (time: number) => {
-    let secs = `${time % 60}`.padStart(2, "0");
-    let minutes = `${Math.floor(time / 60)}`.padStart(2, "0");
+export const formatSecondsToClockTime = (seconds: number) => {
+    let paddedMinutes = `${Math.floor(seconds / 60)}`.padStart(2, "0");
+    let paddedSeconds = `${seconds % 60}`.padStart(2, "0");
 
-    return `${minutes}:${secs}`;
+    return `${paddedMinutes}:${paddedSeconds}`;
 };
 
 const getRandomElement = <T>(arr: T[]) => {
     return arr[randomInteger(0, arr.length - 1)];
 };
 
-const getRandomNotes = (include: string[] = [], total: number = 5) => {
+export const getRandomNotes = (include: string[] = [], total: number = 5) => {
+    if (total < 1) return [];
+    if (include.length === total) return include;
+
     let notes: string[] = [];
 
     while (notes.length < total) {
@@ -35,7 +38,7 @@ const getRandomNotes = (include: string[] = [], total: number = 5) => {
     return notes;
 };
 
-const generateQues = (options: OptionsType, prevQues: Question): Question => {
+export const generateQues = (options: OptionsType, prevQues: Question): Question => {
     if (options.strings.length === 1 && options.frets.length === 1) {
         return {
             string: options.strings[0],

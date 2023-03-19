@@ -1,6 +1,6 @@
 import { uiActions } from "../../store/ui-slice";
 import { start } from "../../store/game-actions";
-import { formatClockTime } from "../../helpers/util";
+import { formatSecondsToClockTime } from "../../helpers/util";
 import styles from "./End.module.css";
 import Logo from "../UI/Logo";
 import Footer from "../layout/Footer";
@@ -22,7 +22,7 @@ function End() {
                     <FontAwesomeIcon className={styles.TrophyIcon} icon={faTrophy} size="3x" />
                     <div className={styles.ScoreText}>
                         <p>Score: {`${game.score}/${totalQues}`}</p>
-                        <p>Time: {`${formatClockTime(game.time)}`}</p>
+                        <p>Time: {`${formatSecondsToClockTime(game.time)}`}</p>
                     </div>
                 </div>
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { gameActions } from "../../store/game-slice";
-import { formatClockTime } from "../../helpers/util";
+import { formatSecondsToClockTime } from "../../helpers/util";
 import styles from "./Clock.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
@@ -23,7 +23,7 @@ function Clock() {
         return () => clearInterval(interval);
     }, [isPlaying, dispatch]);
 
-    return <div className={styles.Clock}>{formatClockTime(time)}</div>;
+    return <div className={styles.Clock}>{formatSecondsToClockTime(time)}</div>;
 }
 
 export default Clock;
