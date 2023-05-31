@@ -1,5 +1,6 @@
 import { screen, render } from "@testing-library/react";
 import Button from "./Button";
+import userEvent from "@testing-library/user-event";
 
 describe("Button", () => {
     it("renders correctly", () => {
@@ -23,5 +24,17 @@ describe("Button", () => {
         });
 
         expect(smallButton.classList).toContain("Small");
+    });
+
+    it("calls onClick on click", async () => {
+        userEvent.setup();
+        const onClickHandlerMock = jest.fn();
+        render(<Button onClick={onClickHandlerMock}>Button</Button>);
+        const button = screen.getByRole("button", {
+            name: /button/i,
+        });
+
+        await userEvent.click(button);
+        expect(onClickHandlerMock).toBeCalledTimes(1);
     });
 });
