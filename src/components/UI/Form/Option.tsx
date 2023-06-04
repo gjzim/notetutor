@@ -14,7 +14,7 @@ function Option({ id, label, children }: OptionPropsType) {
 export type OptionPropsType = {
     id: string;
     label: string;
-    children: React.ReactElement[];
+    children: React.ReactElement | React.ReactElement[];
 };
 
 export default Option;
