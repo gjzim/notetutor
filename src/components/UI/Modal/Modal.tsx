@@ -4,6 +4,10 @@ import Backdrop from "./Backdrop";
 import ModalHeader from "./ModalHeader";
 import ModalBody from "./ModalBody";
 
+const overlaysAside = document.createElement("aside");
+overlaysAside.setAttribute("id", "overlays");
+document.getElementById("root")!.appendChild(overlaysAside);
+
 function Modal({ className = "", header = "", children, high = false, onBackdropClick }: ModalPropsType) {
     return ReactDOM.createPortal(
         <>
@@ -23,7 +27,7 @@ function Modal({ className = "", header = "", children, high = false, onBackdrop
 export type ModalPropsType = {
     children: React.ReactElement;
     onBackdropClick: () => void;
-    className: string;
+    className?: string;
     high?: boolean;
     header?: string | React.ReactElement;
 };
