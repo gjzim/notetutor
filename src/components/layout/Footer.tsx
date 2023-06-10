@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer>
             <p className={styles.footerText}>
-                Designed & Developed by
+                Designed &amp; Developed by &nbsp;
                 <a href="http://gjzim.com" target="_blank" rel="noreferrer">
                     Gul Jamal Zim
                 </a>
