@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 export function setupStore(preloadedState?: PreloadedState<AppState>) {
     return configureStore({
         reducer: rootReducer,
-        preloadedState: {},
+        preloadedState,
     });
 }
 
