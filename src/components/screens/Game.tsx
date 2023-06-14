@@ -10,7 +10,7 @@ import Fretboard from "../game/Fretboard";
 import Question from "../game/Question";
 import Button from "../UI/Button";
 import Clock from "../game/Clock";
-import MenuModal from "../layout/overlays/MenuModal";
+import MenuModal from "../layout/overlays/MenuModal/MenuModal";
 import PauseModal from "../layout/overlays/PauseModal";
 import ConfirmModal from "../layout/overlays/ConfirmModal";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";

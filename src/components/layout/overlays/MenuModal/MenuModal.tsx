@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { optionsActions } from "../../../store/options-slice";
-import { DEFAULT_OPTIONS } from "../../../constants/options";
-import { FRETS } from "../../../constants/guitar";
-import Modal from "../../UI/Modal/Modal";
-import Option from "../../UI/Form/Option";
-import Checkbox from "../../UI/Form/Checkbox";
-import Button from "../../UI/Button";
-import ModalControls from "../../UI/Modal/ModalControls";
-import ConfirmModal from "./ConfirmModal";
-import InfoModal from "./InfoModal";
+import { optionsActions } from "../../../../store/options-slice";
+import { DEFAULT_OPTIONS } from "../../../../constants/options";
+import { FRETS } from "../../../../constants/guitar";
+import Modal from "../../../UI/Modal/Modal";
+import Option from "../../../UI/Form/Option";
+import Checkbox from "../../../UI/Form/Checkbox";
+import Button from "../../../UI/Button";
+import ModalControls from "../../../UI/Modal/ModalControls";
+import ConfirmModal from "../ConfirmModal";
+import InfoModal from "../InfoModal";
 import styles from "./MenuModal.module.css";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 
 const STRING_OPTIONS = [
     { id: "string_1", label: "1(E)", value: 1 },
@@ -101,6 +101,7 @@ function MenuModal({ onClose }: { onClose: () => void }) {
                             max="99"
                             value={selectedTotalQues}
                             className={styles.TotalQues}
+                            id="total_ques"
                             onChange={(event) => setSelectedTotalQues(+event.target.value)}
                         />
                         <span id="total_ques_display" className={styles.TotalQuesDisp}>
@@ -109,7 +110,12 @@ function MenuModal({ onClose }: { onClose: () => void }) {
                     </Option>
 
                     <Option label="Strings" id="strings">
-                        <select name="strings" value={selectedStrings.join()} onChange={handleSelectChange}>
+                        <select
+                            name="strings"
+                            id="strings"
+                            value={selectedStrings.join()}
+                            onChange={handleSelectChange}
+                        >
                             <option value="">Custom</option>
                             <option value="1,2,3,4,5,6">All</option>
                             <option value="1,2,3">1-3</option>
@@ -132,7 +138,7 @@ function MenuModal({ onClose }: { onClose: () => void }) {
                         </div>
                     </Option>
 
-                    <Option label="Frets" id="frets">
+                    <Option label="Frets" id="frets-select">
                         <select
                             name="frets"
                             id="frets-select"

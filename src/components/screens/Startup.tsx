@@ -4,7 +4,7 @@ import styles from "./Startup.module.css";
 import LogoLarge from "../UI/LogoLarge";
 import Button from "../UI/Button";
 import Footer from "../layout/Footer";
-import MenuModal from "../layout/overlays/MenuModal";
+import MenuModal from "../layout/overlays/MenuModal/MenuModal";
 import { useAppDispatch } from "../../hooks/redux";
 
 function Startup() {
