@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { optionsActions } from "../../../../store/options-slice";
 import { DEFAULT_OPTIONS } from "../../../../constants/options";
-import { FRETS } from "../../../../constants/guitar";
 import Modal from "../../../UI/Modal/Modal";
 import Option from "../../../UI/Form/Option";
-import Checkbox from "../../../UI/Form/Checkbox";
 import Button from "../../../UI/Button";
 import ModalControls from "../../../UI/Modal/ModalControls";
 import ConfirmModal from "../ConfirmModal";
@@ -12,6 +10,7 @@ import InfoModal from "../InfoModal";
 import styles from "./MenuModal.module.css";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { StringsInput } from "./StringsInput";
+import { FretsInput } from "./FretsInput";
 
 function MenuModal({ onClose }: { onClose: () => void }) {
     const options = useAppSelector((state) => state.options);
@@ -107,34 +106,11 @@ function MenuModal({ onClose }: { onClose: () => void }) {
                         selectedStrings={selectedStrings}
                     />
 
-                    <Option label="Frets" id="frets-select">
-                        <select
-                            name="frets"
-                            id="frets-select"
-                            value={selectedFrets.join()}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="">Custom</option>
-                            <option value="0,1,2,3,4,5,6,7,8,9,10,11,12,13">All</option>
-                            <option value="1,2,3,4,5">1-5</option>
-                            <option value="6,7,8,9,10,11,12">6-12</option>
-                        </select>
-
-                        <div className={styles.FretCheckboxesWrap}>
-                            {FRETS.map((f) => (
-                                <Checkbox
-                                    key={`fret_${f}`}
-                                    id={`fret_${f}`}
-                                    className={styles.FretCheckbox}
-                                    name="fret"
-                                    label={f.toString()}
-                                    value={f}
-                                    checked={selectedFrets.includes(f)}
-                                    onChange={handleCheckboxChange}
-                                />
-                            ))}
-                        </div>
-                    </Option>
+                    <FretsInput
+                        onSelectionChange={handleSelectChange}
+                        onCheckboxChange={handleCheckboxChange}
+                        selectedFrets={selectedFrets}
+                    />
                 </div>
 
                 <ModalControls>
