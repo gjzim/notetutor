@@ -3,11 +3,9 @@ import TIMINGS from "../../constants/timings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Choice.module.css";
-import { useAppSelector } from "../../hooks/redux";
 
-function Choice({ note, onClick }: { note: string; onClick: (result: string) => void }) {
-    const [status, setStatus] = useState("active");
-    const answer = useAppSelector((state) => (state.game.quiz ? state.game.quiz.current.answer : ""));
+function Choice({ note, answer, onClick }: { note: string; answer: string; onClick: (result: string) => void }) {
+    const [status, setStatus] = useState<"active" | "correct" | "wrong">("active");
     const timeOutHandlerRef = useRef<undefined | ReturnType<typeof setTimeout>>();
 
     useEffect(() => {
