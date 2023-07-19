@@ -26,7 +26,7 @@ function Choice({ note, answer, onClick }: { note: string; answer: string; onCli
         }, TIMINGS.SHOW_ANSWER);
     };
 
-    let classes = [styles.Choice];
+    let classes = [];
     if (status !== "active") {
         classes.push(styles[status]);
     }
@@ -39,8 +39,10 @@ function Choice({ note, answer, onClick }: { note: string; answer: string; onCli
     }
 
     return (
-        <li className={classes.join(" ")} onClick={handleClick}>
-            {btnText}
+        <li className={styles.Choice}>
+            <button className={classes.join(" ")} onClick={handleClick} disabled={status !== "active"}>
+                {btnText}
+            </button>
         </li>
     );
 }

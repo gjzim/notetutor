@@ -2,10 +2,18 @@
     list-style: none;
     width: 100px;
     text-align: center;
+}
+
+.Choice button {
+    width: 100%;
+    border: none;
+    outline: none;
     background: white;
     background: linear-gradient(#fff 0%, #bbb 100%);
     color: #b90000;
+    font-family: "Open Sans Condensed";
     font-size: 35px;
+    font-weight: bold;
     text-transform: uppercase;
     border-radius: 3px;
     padding: 10px 3px;
@@ -17,17 +25,17 @@
     user-select: none;
 }
 
-.Choice:hover {
+.Choice button:hover {
     background: linear-gradient(#bbb 0%, #fff 100%);
 }
 
-.Choice:active {
-    border-top: 0;
+.Choice button:active {
+    border-top-color: transparent;
     box-shadow: 0px 1px 1px #333;
     padding: 10px 3px 9px;
 }
 
-.Choice.correct {
+.Choice button.correct {
     background: #118611;
     background: linear-gradient(#118611 0%, #0f690f 100%);
     color: #ddd;
@@ -37,7 +45,7 @@
     pointer-events: none;
 }
 
-.Choice.wrong {
+.Choice button.wrong {
     background: #d00404;
     background: linear-gradient(#d00404 0%, #860101 100%);
     color: #ddd;
@@ -48,7 +56,7 @@
     pointer-events: none;
 }
 
-.Choice.wrong .fa {
+.Choice button.wrong .fa {
     position: relative;
     top: -1px;
 }
