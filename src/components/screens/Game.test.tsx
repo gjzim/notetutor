@@ -8,11 +8,12 @@ import {
 import App from "../../App";
 import Game from "./Game";
 import { STRING_FRET_POSITIONS } from "../../constants/guitar";
+import { act } from "react-dom/test-utils";
 
 beforeAll(addRootAndOverlaysElementsInDom);
 afterAll(removeRootElementFromDom);
 
-const mockGameState = {
+const mockGameInitState = {
     playing: true,
     quiz: {
         current: {
@@ -30,11 +31,33 @@ const mockGameState = {
     time: 0,
 };
 
+const mockGameState = {
+    playing: true,
+    quiz: {
+        current: {
+            serial: 5,
+            ques: {
+                string: 1,
+                fret: 1,
+            },
+            answer: "f",
+            options: ["a", "b", "c", "d", "f"],
+        },
+        prev: {
+            serial: 4,
+            string: 3,
+            fret: 1,
+        },
+    },
+    score: 3,
+    time: 61,
+};
+
 describe("End", () => {
     it("renders correctly", () => {
         renderWithProviders(<Game />, {
             preloadedState: {
-                game: mockGameState,
+                game: mockGameInitState,
             },
         });
 
@@ -52,5 +75,113 @@ describe("End", () => {
 
         expect(screen.getByRole("heading").textContent).toBe("Q1: Select the right note");
         expect(screen.getByTestId("clock-display")).toHaveTextContent("00:00");
+    });
+
+    it("pauses and resumes the game properly", async () => {
+        jest.useFakeTimers();
+        const user = userEvent.setup({ delay: null });
+
+        renderWithProviders(<Game />, {
+            preloadedState: {
+                game: mockGameInitState,
+            },
+        });
+
+        const pauseBtn = screen.getByRole("button", {
+            name: /pause/i,
+        });
+
+        const clockDisplayElement = screen.getByTestId("clock-display");
+        expect(clockDisplayElement).toHaveTextContent("00:00");
+        await user.click(pauseBtn);
+        act(() => {
+            jest.advanceTimersByTime(5000);
+        });
+        expect(clockDisplayElement).toHaveTextContent("00:00");
+
+        await user.click(
+            screen.getByRole("button", {
+                name: /resume/i,
+            })
+        );
+        act(() => {
+            jest.advanceTimersByTime(5000);
+        });
+        expect(clockDisplayElement).toHaveTextContent("00:05");
+
+        jest.useRealTimers();
+    });
+
+    it("restarts game properly on restart button click", async () => {
+        jest.useFakeTimers();
+        const user = userEvent.setup({ delay: null });
+
+        renderWithProviders(<Game />, {
+            preloadedState: {
+                game: mockGameState,
+            },
+        });
+
+        expect(screen.getByRole("heading").textContent).toBe("Q5: Select the right note");
+        expect(screen.getByTestId("clock-display")).toHaveTextContent("01:01");
+
+        await user.click(
+            screen.getByRole("button", {
+                name: /restart/i,
+            })
+        );
+        await user.click(
+            screen.getByRole("button", {
+                name: /yes/i,
+            })
+        );
+
+        expect(screen.getByRole("heading").textContent).toBe("Q1: Select the right note");
+        expect(screen.getByTestId("clock-display")).toHaveTextContent("00:00");
+
+        jest.useRealTimers();
+    });
+
+    it("restarts game properly on pause -> restart button click", async () => {
+        jest.useFakeTimers();
+        const user = userEvent.setup({ delay: null });
+
+        renderWithProviders(<Game />, {
+            preloadedState: {
+                game: mockGameState,
+            },
+        });
+
+        expect(screen.getByRole("heading").textContent).toBe("Q5: Select the right note");
+        expect(screen.getByTestId("clock-display")).toHaveTextContent("01:01");
+
+        await user.click(
+            screen.getByRole("button", {
+                name: /pause/i,
+            })
+        );
+
+        await user.click(
+            screen.getAllByRole("button", {
+                name: /restart/i,
+            })[0]
+        );
+
+        // await user.click(
+        //     container.getElementById("overlays").getByRole("button", {
+        //         name: /restart/i,
+        //     })
+        // );
+
+        await user.click(
+            screen.getByRole("button", {
+                name: /yes/i,
+            })
+        );
+
+        expect(screen.getByRole("heading").textContent).toBe("Q1: Select the right note");
+        expect(screen.getByTestId("clock-display")).toHaveTextContent("00:00");
+
+        jest.useRealTimers();
     });
 });
