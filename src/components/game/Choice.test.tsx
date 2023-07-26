@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Choice from "./Choice";
 import TIMINGS from "../../constants/timings";
+import { act } from "react-dom/test-utils";
 
 describe("Choice", () => {
     it("renders correctly", () => {
@@ -46,17 +47,21 @@ describe("Choice", () => {
     });
 
     it("disables button onClick and enables them again", async () => {
-        userEvent.setup();
+        jest.useFakeTimers();
+        const user = userEvent.setup({ delay: null });
+
         render(<Choice note="a" answer="b" onClick={() => {}} />);
 
         const button = screen.getByRole("button", {
             name: /a/i,
         });
-        await userEvent.click(button);
+        await user.click(button);
 
         expect(button).toBeDisabled();
-        setTimeout(() => {
-            expect(button).toBeEnabled();
-        }, TIMINGS.SHOW_ANSWER);
+        act(() => {
+            jest.advanceTimersByTime(TIMINGS.SHOW_ANSWER);
+        });
+        expect(button).toBeEnabled();
+        jest.useRealTimers();
     });
 });
