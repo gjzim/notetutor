@@ -8,7 +8,7 @@ function Fretboard({ string, fret }: { string: number; fret: number }) {
     };
     return (
         <div className={styles.Fretboard}>
-            <span id={styles.quesIcon} style={style}>
+            <span id={styles.quesIcon} style={style} data-testid="question-icon">
                 ?
             </span>
         </div>

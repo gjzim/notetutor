@@ -23,7 +23,11 @@ function Clock() {
         return () => clearInterval(interval);
     }, [isPlaying, dispatch]);
 
-    return <div className={styles.Clock}>{formatSecondsToClockTime(time)}</div>;
+    return (
+        <div className={styles.Clock} data-testid="clock-display">
+            {formatSecondsToClockTime(time)}
+        </div>
+    );
 }
 
 export default Clock;
