@@ -96,9 +96,15 @@ function Game() {
                 onChoiceClick={handleChoiceClick}
             />
             <div className={styles.Controls}>
-                <Button onClick={handleMenuClick}>Menu</Button>
-                <Button onClick={handleRestartClick}>Restart</Button>
-                <Button onClick={handlePauseClick}>Pause</Button>
+                <Button onClick={handleMenuClick} data-cy="menu-btn">
+                    Menu
+                </Button>
+                <Button onClick={handleRestartClick} data-cy="restart-btn">
+                    Restart
+                </Button>
+                <Button onClick={handlePauseClick} data-cy="pause-btn">
+                    Pause
+                </Button>
             </div>
             <Clock />
 
