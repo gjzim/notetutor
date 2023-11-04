@@ -39,7 +39,7 @@ function Choice({ note, answer, onClick }: { note: string; answer: string; onCli
     }
 
     return (
-        <li className={styles.Choice}>
+        <li className={styles.Choice} data-cy="choice">
             <button className={classes.join(" ")} onClick={handleClick} disabled={status !== "active"}>
                 {btnText}
             </button>

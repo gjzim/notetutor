@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 function Logo() {
     return (
         <div className={styles.Logo}>
-            <img src={logoImg} alt="Notetutor logo" />
+            <img src={logoImg} alt="Notetutor logo" data-cy="notetutor-logo" />
         </div>
     );
 }
