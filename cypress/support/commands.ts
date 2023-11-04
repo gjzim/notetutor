@@ -35,3 +35,11 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add("getBySel", (selector: string, ...args) => {
+    return cy.get(`[data-cy=${selector}],[data-testid=${selector}]`, ...args);
+});
+
+Cypress.Commands.add("getBySelLike", (selector: string, ...args) => {
+    return cy.get(`[data-cy*=${selector}],[data-testid*=${selector}]`, ...args);
+});
