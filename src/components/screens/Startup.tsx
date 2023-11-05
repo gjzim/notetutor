@@ -16,8 +16,12 @@ function Startup() {
             <LogoLarge />
             <h2 className={styles.slogan}>Master Your Fretboard</h2>
             <div className={styles.controls}>
-                <Button onClick={() => dispatch(start())}>Start Playing</Button>
-                <Button onClick={() => setShowMenu(true)}>Customize</Button>
+                <Button onClick={() => dispatch(start())} data-cy="start-playing">
+                    Start Playing
+                </Button>
+                <Button onClick={() => setShowMenu(true)} data-cy="customize">
+                    Customize
+                </Button>
             </div>
             <Footer />
             {showMenu && <MenuModal onClose={() => setShowMenu(false)} />}
