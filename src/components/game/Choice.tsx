@@ -5,42 +5,43 @@ import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Choice.module.css";
 
 function Choice({ note, answer, onClick }: { note: string; answer: string; onClick: (result: string) => void }) {
-    const [status, setStatus] = useState<"active" | "correct" | "wrong">("active");
+    const [btnStatus, setBtnStatus] = useState<"active" | "correct" | "wrong">("active");
     const timeOutHandlerRef = useRef<undefined | ReturnType<typeof setTimeout>>();
+    const status = note === answer ? "correct" : "wrong";
 
     useEffect(() => {
         return () => clearTimeout(timeOutHandlerRef.current);
     }, []);
 
     const handleClick = () => {
-        if (note === answer) {
-            setStatus("correct");
-            onClick("correct");
-        } else {
-            setStatus("wrong");
-            onClick("wrong");
-        }
+        setBtnStatus(status);
+        onClick(status);
 
         timeOutHandlerRef.current = setTimeout(() => {
-            setStatus("active");
+            setBtnStatus("active");
         }, TIMINGS.SHOW_ANSWER);
     };
 
     let classes = [];
-    if (status !== "active") {
-        classes.push(styles[status]);
+    if (btnStatus !== "active") {
+        classes.push(styles[btnStatus]);
     }
 
     let btnText: string | React.ReactElement = note;
-    if (status === "correct") {
+    if (btnStatus === "correct") {
         btnText = <FontAwesomeIcon icon={faCheck} />;
-    } else if (status === "wrong") {
+    } else if (btnStatus === "wrong") {
         btnText = <FontAwesomeIcon icon={faTimes} />;
     }
 
     return (
         <li className={styles.Choice} data-cy="choice">
-            <button className={classes.join(" ")} onClick={handleClick} disabled={status !== "active"}>
+            <button
+                className={classes.join(" ")}
+                onClick={handleClick}
+                disabled={btnStatus !== "active"}
+                data-cy={window.Cypress ? `${status}-choice-btn` : "choice-btn"}
+            >
                 {btnText}
             </button>
         </li>
