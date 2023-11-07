@@ -4,7 +4,7 @@ import styles from "./LogoLarge.module.css";
 function LogoLarge() {
     return (
         <div className={styles.LogoLarge}>
-            <img src={largeLogoImg} alt="Notetutor logo large" />
+            <img src={largeLogoImg} alt="Notetutor logo large" data-cy="notetutor-logo-large" />
         </div>
     );
 }
