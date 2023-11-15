@@ -114,14 +114,14 @@ function MenuModal({ onClose }: { onClose: () => void }) {
                 </div>
 
                 <ModalControls>
-                    <Button type="small" onClick={() => setShowResetModal(true)}>
+                    <Button type="small" onClick={() => setShowResetModal(true)} data-cy="mm-reset-btn">
                         Reset
                     </Button>
                     <div>
-                        <Button type="small" onClick={saveUpdatedOptions}>
+                        <Button type="small" onClick={saveUpdatedOptions} data-cy="mm-save-btn">
                             Save
                         </Button>
-                        <Button type="small" onClick={handleCloseClick}>
+                        <Button type="small" onClick={handleCloseClick} data-cy="mm-close-btn">
                             Close
                         </Button>
                     </div>
