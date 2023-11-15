@@ -7,10 +7,10 @@ function ConfirmModal({ text, onClose, onConfirm, onReject }: ConfirmModalPropsT
         <Modal className={styles.ConfirmModal} onBackdropClick={onClose} high>
             <>
                 <p>{text}</p>
-                <Button type="small" onClick={onConfirm}>
+                <Button type="small" onClick={onConfirm} data-cy="cm-confirm">
                     Yes
                 </Button>
-                <Button type="small" onClick={onReject}>
+                <Button type="small" onClick={onReject} data-cy="cm-reject">
                     No
                 </Button>
             </>
