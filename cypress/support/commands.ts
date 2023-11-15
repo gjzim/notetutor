@@ -43,3 +43,12 @@ Cypress.Commands.add("getBySel", (selector: string, ...args) => {
 Cypress.Commands.add("getBySelLike", (selector: string, ...args) => {
     return cy.get(`[data-cy*=${selector}],[data-testid*=${selector}]`, ...args);
 });
+
+Cypress.Commands.add("changeSliderValue", (selector: string, value: any) => {
+    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")!.set;
+    cy.get(selector).then(($range) => {
+        const range = $range[0];
+        nativeInputValueSetter!.call(range, value);
+        range.dispatchEvent(new Event("change", { value: value, bubbles: true } as EventInit));
+    });
+});
