@@ -17,4 +17,9 @@ describe("template spec", () => {
         cy.getBySel("personal-site-link").should("have.attr", "href", "http://gjzim.com");
         cy.get(".github-corner").should("have.attr", "href", "https://github.com/gjzim/notetutor");
     });
+
+    it("opens menu modal on customize button click", () => {
+        cy.getBySel("customize").click();
+        cy.get("#overlays").contains(/menu/i);
+    });
 });
