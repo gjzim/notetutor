@@ -46,9 +46,15 @@ function PauseModal({ onClose }: { onClose: () => void }) {
     return (
         <Modal header="Pause" className={styles.PauseModal} onBackdropClick={onClose}>
             <>
-                <Button onClick={onClose}>Resume</Button>
-                <Button onClick={handleRestartClick}>Restart</Button>
-                <Button onClick={handleQuitClick}>Quit</Button>
+                <Button onClick={onClose} data-cy="pm-resume-btn">
+                    Resume
+                </Button>
+                <Button onClick={handleRestartClick} data-cy="pm-restart-btn">
+                    Restart
+                </Button>
+                <Button onClick={handleQuitClick} data-cy="pm-quit-btn">
+                    Quit
+                </Button>
 
                 {showRestartConfirm && (
                     <ConfirmModal
