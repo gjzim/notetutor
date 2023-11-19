@@ -5,7 +5,6 @@ import {
     removeRootElementFromDom,
     renderWithProviders,
 } from "../../helpers/test-utils";
-import App from "../../App";
 import Game from "./Game";
 import { STRING_FRET_POSITIONS } from "../../constants/guitar";
 import { act } from "react-dom/test-utils";
@@ -53,7 +52,7 @@ const mockGameState = {
     time: 61,
 };
 
-describe("End", () => {
+describe("Game", () => {
     it("renders correctly", () => {
         renderWithProviders(<Game />, {
             preloadedState: {
