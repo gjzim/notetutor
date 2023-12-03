@@ -40,7 +40,7 @@ describe("template spec", () => {
         cy.getBySel("clock-display").contains("00:05");
     });
 
-    it.only("pauses and resumes the game properly", () => {
+    it("pauses and resumes the game properly", () => {
         cy.clock();
         cy.visit("http://localhost:3000/notetutor");
         cy.getBySel("start-playing").click();
@@ -53,5 +53,56 @@ describe("template spec", () => {
         cy.getBySel("pm-resume-btn").click();
         cy.tick(5000);
         cy.getBySel("clock-display").contains("00:05");
+    });
+
+    it("restarts game properly on restart button click", () => {
+        cy.clock();
+        cy.visit("http://localhost:3000/notetutor");
+        cy.getBySel("start-playing").click();
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.contains(/Q3: Select the right note/i);
+        cy.contains(/restart/i).click();
+        cy.getBySel("cm-reject").click();
+        cy.contains(/Q3: Select the right note/i);
+        cy.getBySel("clock-display").contains("00:10");
+        cy.contains(/restart/i).click();
+        cy.getBySel("cm-confirm").click();
+        cy.contains(/Q1: Select the right note/i);
+        cy.getBySel("clock-display").contains("00:00");
+    });
+
+    it("restarts game properly on pause -> restart button click", () => {
+        cy.clock();
+        cy.visit("http://localhost:3000/notetutor");
+        cy.getBySel("start-playing").click();
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.contains(/Q3: Select the right note/i);
+        cy.contains(/pause/i).click();
+        cy.getBySel("pm-restart-btn").click();
+        cy.getBySel("cm-confirm").click();
+        cy.contains(/Q1: Select the right note/i);
+        cy.getBySel("clock-display").contains("00:00");
+    });
+
+    it("restarts game properly on pause -> quit button click", () => {
+        cy.clock();
+        cy.visit("http://localhost:3000/notetutor");
+        cy.getBySel("start-playing").click();
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.getBySel("correct-choice-btn").first().click();
+        cy.tick(5000);
+        cy.contains(/Q3: Select the right note/i);
+        cy.contains(/pause/i).click();
+        cy.getBySel("pm-quit-btn").click();
+        cy.getBySel("cm-confirm").click();
+        cy.contains(/Q1: Select the right note/i).should("not.exist");
+        cy.contains(/Master Your Fretboard/i);
     });
 });
