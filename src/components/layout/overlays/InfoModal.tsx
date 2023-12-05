@@ -14,7 +14,7 @@ function InfoModal({ text, onClose }: { text: string; onClose: () => void }) {
         <Modal className={styles.InfoModal} onBackdropClick={onClose} high>
             <>
                 <p>{text}</p>
-                <Button type="small" onClick={onClose}>
+                <Button type="small" onClick={onClose} data-cy="im-close">
                     Close
                 </Button>
             </>
