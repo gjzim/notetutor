@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { DEFAULT_OPTIONS } from "./../../src/constants/options";
 
-describe("template spec", () => {
+describe("menu screen spec", () => {
     beforeEach(() => {
         cy.visit("http://localhost:3000/notetutor");
         cy.getBySel("customize").click();

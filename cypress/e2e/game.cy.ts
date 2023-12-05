@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("template spec", () => {
+describe("game screen spec", () => {
     beforeEach(() => {
         cy.visit("http://localhost:3000/notetutor");
         cy.getBySel("start-playing").click();
