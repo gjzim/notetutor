@@ -105,4 +105,27 @@ describe("game screen spec", () => {
         cy.contains(/Q1: Select the right note/i).should("not.exist");
         cy.contains(/Master Your Fretboard/i);
     });
+
+    it("uses updated game settings in game", () => {
+        cy.clock();
+        cy.visit("http://localhost:3000/notetutor");
+        cy.getBySel("start-playing").click();
+        cy.contains(/menu/i).click();
+        cy.changeSliderValue("#total_ques", 10);
+        cy.get('input[name="string"]').uncheck();
+        cy.get("#string_1").check();
+        cy.get('input[name="fret"]').uncheck();
+        cy.get("#fret_0").check();
+        cy.getBySel("mm-save-btn").click();
+        cy.getBySel("im-close").click();
+        cy.getBySel("mm-close-btn").click();
+        cy.getBySel("wrong-choice-btn").first().click();
+        cy.tick(1000);
+        for (let i = 0; i < 9; i++) {
+            cy.contains(/^e$/i).click();
+            cy.tick(1000);
+        }
+        cy.contains(/score: 9\/10/i);
+        cy.contains(/time: 00:1[0-9]/i);
+    });
 });
