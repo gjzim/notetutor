@@ -2,7 +2,7 @@ import styles from "./Option.module.css";
 
 function Option({ id, label, children }: OptionPropsType) {
     return (
-        <div className={`${styles.Option} ${id} clearfix`}>
+        <div className={`${styles.Option} ${styles[`${id}-option`] || ""} clearfix`}>
             <div className={styles.OptionLabel}>
                 <label htmlFor={id}>{label}:</label>
             </div>
